@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= profile ? profile.name : username %> | Portafolio Backend y DevSecOps</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="cursor-glow"></div>
+
+    <header>
+        <nav>
+            <div class="logo">&lt;<%= username %> /&gt;</div>
+            <ul>
+                <li><a href="#about">Sobre mí</a></li>
+                <li><a href="#skills">Tecnologías</a></li>
+                <li><a href="#experience">Experiencia</a></li>
+                <li><a href="#projects">Proyectos</a></li>
+                <li><a href="#contact">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero">
+            <div class="hero-content">
+                <p class="mono accent">Inicializando sistema...</p>
+                <h1><%= profile ? profile.name : username %></h1>
+                <h2 class="glitch" data-text="Desarrollador Backend y DevSecOps">Desarrollador Backend y DevSecOps</h2>
+                <p class="bio"><%= profile ? profile.bio : 'Construyendo sistemas seguros y escalables.' %></p>
+                <div class="cta-group">
+                    <a href="#projects" class="btn primary">Ver Operaciones</a>
+                    <a href="<%= profile ? profile.html_url : '#' %>" target="_blank" class="btn secondary"><i class="fab fa-github"></i> GitHub</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills">
+            <div class="section-header">
+                <span class="mono">01.</span>
+                <h3>Stack Tecnológico</h3>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <i class="fas fa-server"></i>
+                    <h4>Backend</h4>
+                    <p>TypeScript, Node.js, NestJS, Prisma, Bun, Lua (FiveM), SQL</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h4>Seguridad</h4>
+                    <p>OWASP, IAM, OAuth2, Pruebas de Penetración</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-network-wired"></i>
+                    <h4>DevOps</h4>
+                    <p>Docker, CI/CD Actions, GitLab Actions</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience">
+            <div class="section-header">
+                <span class="mono">02.</span>
+                <h3>Experiencia Laboral</h3>
+            </div>
+            <div class="jobs-grid">
+                <article class="job-card">
+                    <div class="job-header">
+                        <h4>Desarrollador Backend & DevSecOps <span class="company">@ Redis Gestio</span></h4>
+                        <span class="job-duration">2024 - Presente</span>
+                    </div>
+                    <span class="job-role">Backend & Infraestructura</span>
+                    <ul class="job-achievements">
+                        <li>Migración exitosa del servidor maestro de PHP 7.4 a 8.3 y MySQL 5.7 a 8.0, asegurando compatibilidad del código.</li>
+                        <li>Reinstalación y actualización de GitLab Self-Hosted, migrando todos los proyectos con historial completo (logs/commits) y mejorando la seguridad y gestión de accesos.</li>
+                        <li>Implementación de pipelines de CI/CD en GitLab para automatización d'análisis de calidad con SonarQube.</li>
+                        <li>Desarrollo de endpoints RESTful optimizados para la aplicación principal.</li>
+                        <li>Administración y configuración de Rocket.Chat para comunicaciones internas seguras.</li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+
+        <section id="projects">
+            <div class="section-header">
+                <span class="mono">03.</span>
+                <h3>Repositorios Activos</h3>
+            </div>
+            
+            <% if (error) { %>
+                <div class="error-msg"><%= error %></div>
+            <% } else if (repos && repos.length > 0) { %>
+                <div class="projects-grid">
+                    <% repos.forEach(repo => { %>
+                        <article class="project-card">
+                            <div class="card-top">
+                                <i class="far fa-folder generic-folder"></i>
+                                <div class="card-links">
+                                    <% if (repo.homepage) { %>
+                                        <a href="<%= repo.homepage %>" target="_blank"><i class="fas fa-external-link-alt"></i></a>
+                                    <% } %>
+                                    <a href="<%= repo.html_url %>" target="_blank"><i class="fab fa-github"></i></a>
+                                </div>
+                            </div>
+                            <h4><%= repo.name %></h4>
+                            <p class="repo-desc"><%= repo.description || 'Sin descripción disponible.' %></p>
+                            <div class="repo-meta">
+                                <span class="language"><%= repo.language %></span>
+                                <span class="stars"><i class="fas fa-star"></i> <%= repo.stargazers_count %></span>
+                            </div>
+                        </article>
+                    <% }); %>
+                </div>
+            <% } else { %>
+                <p>No se encontraron repositorios públicos.</p>
+            <% } %>
+        </section>
+
+        <section id="contact">
+            <div class="section-header">
+                <span class="mono">04.</span>
+                <h3>Establecer Conexión</h3>
+            </div>
+            <p>Actualmente estoy en busca de nuevas oportunidades. Si tienes una propuesta o consulta, no dudes en escribirme.</p>
+            <a href="mailto:bardeliger@gmail.com" class="btn primary">Contactar</a>
+        </section>
+    </main>
+
+    <footer>
+        <p class="mono">Diseñado y Construido por Gerard Bardeli</p>
+    </footer>
+
+    <script src="/js/script.js"></script>
+</body>
+</html>
