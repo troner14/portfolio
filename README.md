@@ -2,7 +2,7 @@
 
 Este es mi portafolio personal, diseñado para mostrar mis habilidades en desarrollo **Backend**, **Infraestructura** y **DevSecOps**. La aplicación es dinámica y consume la API de GitHub para mantener actualizados mis repositorios y perfil en tiempo real.
 
-## 🚀 Características
+## Características
 
 -   **Integración con GitHub API**: Muestra automáticamente mis repositorios públicos más recientes y estadísticas.
 -   **Renderizado Dinámico**: Construido con **Node.js** y **EJS** para generar contenido en el servidor.
@@ -13,14 +13,14 @@ Este es mi portafolio personal, diseñado para mostrar mis habilidades en desarr
     -   Proyectos Destacados (Filtrado automático).
     -   Contacto.
 
-## 🛠️ Stack Tecnológico
+## Stack Tecnológico
 
 -   **Backend**: Node.js, Express.js
 -   **Template Engine**: EJS
 -   **Estilos**: CSS3 (Variables, Flexbox, Grid)
 -   **Servicios**: Axios (Peticiones HTTP), GitHub REST API
 
-## 🔧 Instalación y Despliegue
+## Instalación y Despliegue
 
 1.  **Clonar el repositorio**
     ```bash
@@ -51,6 +51,6 @@ Este es mi portafolio personal, diseñado para mostrar mis habilidades en desarr
     npm start
     ```
 
-## 📝 Licencia
+## Licencia
 
 Este proyecto está bajo la licencia ISC.
